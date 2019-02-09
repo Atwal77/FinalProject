@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    <ul>
+
+        <li>Name : {{ data.0 }}</li>
+        <li>Norad_ID : {{ data.1 }}</li>
+        <li>Launch_Date : {{ data.2 }}</li>
+        <li>Launch Vehicle : {{ data.3 }}</li>
+        <li>Application : {{ data.4 }}</li>
+        <li>Orbit Type : {{ data.5 }}</li>
+
+    </ul>
+
+    <ul>
+        {% for v in content %}
+            {% for key,value in v.items() %}
+                <li> {{ key }} : {{ value }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+{% endblock %}

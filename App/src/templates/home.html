@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    <form id="home" action="/results" method="post">
+        <input type="text"  name="Stype">
+        <input type="text" name="Sname">
+        <input type="submit">
+    </form>
+    <ul>
+        {% for i in range(10) %}
+            <li>{{ i }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
