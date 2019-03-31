@@ -12,17 +12,21 @@ def start():
 
 @app.route('/')
 def hello():
-    return render_template('home.html')
+    return render_template('map.html')
 
 @app.route('/results' , methods = ['POST'])
 def post_results():
     Stype = request.form['Stype']
     Sname = request.form['Sname']
-    row = Database.find(Stype,Sname);
+
+    row = Database.find(Stype,Sname)
+    if row is None :
+        return render_template("Error.html")
     norad = Database.getNorad(Stype,Sname)
     print(norad)
     dynamicData = Database.getdata(norad)
     return render_template("results.html", data=row , content=dynamicData)
+
 
 if __name__ == '__main__':
     app.run()
