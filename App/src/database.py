@@ -13,11 +13,14 @@ class Database:
     def find(Stype , name):
         sql = "SELECT *FROM HAB where S_name='%s'" %(name)
         #print(sql)
-        Database.cur.execute(sql)
-        row = None
-        for row in Database.cur:
-            list(row)
-        return row
+        try:
+            Database.cur.execute(sql)
+            row = None
+            for row in Database.cur:
+                list(row)
+            return row
+        except pymysql.Error as err :
+            return None
 
     @staticmethod
     def getNorad(Stype,name):
